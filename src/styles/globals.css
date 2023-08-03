@@ -1,0 +1,62 @@
+@tailwind components;
+@tailwind utilities;
+
+/* For debugging */
+/* * {
+  outline: 1px solid red;
+} */
+
+#marinade-terminal * {
+  box-sizing: border-box;
+  font-family: 'Maven Pro', sans-serif;
+}
+
+#marinade-terminal *:focus {
+  outline: none;
+}
+
+/* Custom scroll bar */
+.webkit-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.webkit-scrollbar::-webkit-scrollbar-thumb {
+  margin: 2px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #979797;
+}
+
+/* ActionButton border gradient */
+#marinade-terminal .v2-border-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1px;
+  background: linear-gradient(91.26deg, rgba(250, 196, 58, 0.5) 15.73%, rgba(113, 229, 237, 0.5) 83.27%);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: source-out;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#marinade-terminal .v2-border-gradient-left.v2-border-gradient::before {
+  border-top-left-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
+}
+#marinade-terminal .v2-border-gradient-center.v2-border-gradient::before {
+  border-radius: 0.75rem;
+}
+#marinade-terminal .v2-border-gradient-right.v2-border-gradient::before {
+  border-top-right-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+}
+
+a {
+  color: #308d8a;
+  cursor: pointer;
+}
