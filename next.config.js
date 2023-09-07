@@ -8,6 +8,7 @@ const nextConfig = withTM({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     });
+    config.cache = false;
     if (!isServer) config.resolve.fallback.fs = false;
     return config;
   },
