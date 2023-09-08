@@ -2,7 +2,7 @@
 
 Marinade Terminal is an open-sourced, lite version of Marinade that provides end-to-end swap flow by linking it in your HTML.
 
-Visit our Demo / Playground over at https://marinade-widget-delta.vercel.app
+Visit our Demo / Playground over at https://marinade-widget.pages.dev
 
 With several templates to get you started, and auto generated code snippets.
 
@@ -30,7 +30,7 @@ With several templates to get you started, and auto generated code snippets.
 In your document, link and embed `main-v1.js`.
 
 ```tsx
-<script src="https://marinade-widget-delta.vercel.app/main-v1.js" data-preload />
+<script src="https://marinade-widget.pages.dev/main-v1.js" data-preload />
 ```
 
 ### Preloading Terminal
@@ -38,7 +38,7 @@ In your document, link and embed `main-v1.js`.
 Assign the attribute `data-preload` to the script tag, the full application will be preloaded on your browser's `(document.readyState === "complete")` event.
 
 ```tsx
-<script src="https://marinade-widget-delta.vercel.app/main-v1.js" data-preload />
+<script src="https://marinade-widget.pages.dev/main-v1.js" data-preload />
 ```
 
 Then,
