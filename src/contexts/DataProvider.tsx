@@ -147,10 +147,12 @@ export const DataProvider: FC<IInit & { children: ReactNode }> = ({
     snapshotAmount: number;
     totalDirectStake: number;
     poolSize: number;
+    currentVote: string | null;
   }>({
     snapshotAmount: 0,
     totalDirectStake: 0,
     poolSize: 0,
+    currentVote: null
   });
   const [target, setTarget] = useState<TargetType | null>(defaultContextValues.target);
   const [marinadeStats, setMarinadeStats] = useState<MarinadeStatsType | null>(null);
@@ -206,6 +208,12 @@ export const DataProvider: FC<IInit & { children: ReactNode }> = ({
       estimateInstantUnstakeAmount();
     }
   }, [target?.amount, stakeMode, jupiter]);
+
+  useEffect(() => {
+    if (allowDirectStake && formProps?.initialValidator === undefined && voteData.currentVote) {
+      setDirectedValidatorAddress(voteData.currentVote)
+    }
+  }, [allowDirectStake, formProps?.initialValidator, voteData.currentVote])
 
   const marinadeConfig = useMemo(() => {
     const defaultConfig = new MarinadeConfig({
@@ -265,10 +273,14 @@ export const DataProvider: FC<IInit & { children: ReactNode }> = ({
       0,
     );
 
+    const marinade = new Marinade(marinadeConfig);
+    const voteRecord = await marinade.getUsersVoteRecord(publicKey)
+
     setVoteData({
       snapshotAmount: Number(snapshot?.amount ?? 0),
       totalDirectStake,
       poolSize: tvl.staked_sol,
+      currentVote: voteRecord.voteRecord?.account.validatorVote.toString() ?? null,
     });
   }
 
